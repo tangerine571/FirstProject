@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello");
         while (true) {
-            System.out.println("Main menu \n enter : \n 1 to encrypt \n 2 to decrypt \n 0 to exit");
+            System.out.println("Main menu \n enter : \n 1  to encrypt \n 2 to decrypt \n 0 to exit");
             int state = sc.nextInt();
             switch (state) {
                 case 1:
@@ -32,7 +32,7 @@ public class Main {
             System.out.println("enter the path where the encrypted text should be saved");
             String path2 = sc.nextLine();                                                   // запись в файл итогового текста
             FileManager.writer(path2, text2);
-            System.out.println("Encryption completed successfully");
+            System.out.println("Encryption completed successfully ");
 
         } catch (IOException e) {
             System.out.println(e.getMessage());

@@ -1,34 +1,45 @@
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main {
+    private static Scanner sc = new Scanner(System.in);
+
     public static void main(String[] args) {
-        String s = "Опа ";
-        String result = Cipher.encrypt(s, 7);
-        System.out.println(result);
+        System.out.println("Hello");
+        while (true) {
+            System.out.println("Main menu \n enter : \n 1 to encrypt \n 2 to decrypt \n 0 to exit");
+            int state = sc.nextInt();
+            switch (state) {
+                case 1:
+                    handleEncryption();
+                    break;
+            }
+        }
+    }
 
-        System.out.println("-----------------------");
-
-        String decResult = Cipher.decrypt(result, 7);
-        System.out.println(decResult);
-
-        System.out.println("-----------------------");
-
-        String str = null;
+    private static void handleEncryption() {
+        System.out.println("enter a cipher key from 1 to " + (Cipher.getAlphabet().length - 1));
         try {
-            str = FileManager.reader("C:\\Users\\manda\\OneDrive\\Desktop\\example.txt");
+            int key = sc.nextInt();
+            Validator.validKey(key);
+            sc.nextLine();                                     //очищаем от /n
+
+            System.out.println("enter the path to the file you want to encrypt ");
+            String path = sc.nextLine();                                                    //чтение с файла и шифрование
+            String text = FileManager.reader(path);
+            String text2 = Cipher.decrypt(text, key);
+
+            System.out.println("enter the path where the encrypted text should be saved");
+            String path2 = sc.nextLine();                                                   // запись в файл итогового текста
+            FileManager.writer(path2, text2);
+            System.out.println("Encryption completed successfully");
+
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println(str);
+    }
 
+    private static void handleDecryption() {
 
-        System.out.println("----------------------------");
-
-
-        try {
-            FileManager.writer("C:\\Users\\manda\\OneDrive\\Desktop\\example.txt", "лежать плюс сосать");
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
     }
 }

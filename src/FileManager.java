@@ -13,17 +13,8 @@ public class FileManager {
         return s;
     }
     public static void writer(String path, String text) throws IOException{
-
+        Validator.checkFileWriter(path);
         Path pa = Path.of(path);
-        if(!Files.exists(pa)){
-            throw new IOException("файл не найден");
-        }
-        if(Files.isDirectory(pa)){
-            throw new IOException("это директория, а не файл");
-        }
-        if(!Files.isWritable(pa)){
-            throw new IOException("файл недоступен  для чтения");
-        }
         Files.writeString(pa,text);
     }
 }

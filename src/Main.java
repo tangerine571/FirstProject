@@ -29,7 +29,7 @@ public class Main {
             String text = FileManager.reader(path);
             String text2 = Cipher.decrypt(text, key);
 
-            System.out.println("enter the path where the encrypted text should be saved");
+            System.out.println("enter the path where the encrypted text should be saved ");
             String path2 = sc.nextLine();                                                   // запись в файл итогового текста
             FileManager.writer(path2, text2);
             System.out.println("Encryption completed successfully");

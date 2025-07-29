@@ -24,7 +24,7 @@ public class Main {
             String keyy = sc.nextLine();
             int key = Validator.validKey(keyy);              // парсинг и проверка введенного ключа
 
-            System.out.println("enter the path to the file you want to encrypt ");
+            System.out.println("enter the path to the file you want to encrypt  ");
             String path = sc.nextLine();                                                    //чтение с файла и шифрование
             String text = FileManager.reader(path);
             String text2 = Cipher.decrypt(text, key);

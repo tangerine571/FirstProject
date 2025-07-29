@@ -24,15 +24,15 @@ public class Main {
             String keyy = sc.nextLine();
             int key = Validator.validKey(keyy);              // парсинг и проверка введенного ключа
 
-            System.out.println("enter the path to the file you want to encrypt  ");
+            System.out.println("enter the path to the file you want to encrypt");
             String path = sc.nextLine();                                                    //чтение с файла и шифрование
             String text = FileManager.reader(path);
             String text2 = Cipher.decrypt(text, key);
 
-            System.out.println("enter the path where the encrypted text should be saved ");
+            System.out.println("enter the path where the encrypted text should be saved");
             String path2 = sc.nextLine();                                                   // запись в файл итогового текста
             FileManager.writer(path2, text2);
-            System.out.println("Encryption completed successfully ");
+            System.out.println("Encryption completed successfully");
 
         } catch (IOException e) {
             System.out.println(e.getMessage());

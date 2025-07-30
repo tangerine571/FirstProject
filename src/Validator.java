@@ -14,10 +14,10 @@ public class Validator {
         try {
             key = Integer.parseInt(keyy);
         } catch (NumberFormatException e) {
-            throw new IOException("ключ должен быть числом от 1 до 69");
+            throw new IOException("uncorrected key");
         }
         if (key > (Cipher.getAlphabet().length - 1) || key <= 0) {
-            throw new IOException("ключ должен быть числом от 1 до 69");
+            throw new IOException("uncorrected key");
         }
         return key;
     }

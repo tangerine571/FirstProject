@@ -28,17 +28,17 @@ public class Validator {
         try {
             pa = Path.of(path);
         } catch (InvalidPathException e) {
-            throw new IOException("некорректный путь");
+            throw new IOException("uncorrected path ");
         }
 
         if (!Files.exists(pa)) {
-            throw new IOException("файл не найден");
+            throw new IOException("file wasn't found");
         }
         if (Files.isDirectory(pa)) {
-            throw new IOException("это директория, а не файл");
+            throw new IOException("it's directory");
         }
         if (!Files.isReadable(pa)) {
-            throw new IOException("файл недоступен  для чтения");
+            throw new IOException("file isn't available");
         }
     }
 
@@ -47,16 +47,16 @@ public class Validator {
         try {
             pa = Path.of(path);
         } catch (InvalidPathException e) {
-            throw new IOException("некорректный путь");
+            throw new IOException("uncorrected path");
         }
         if (!Files.exists(pa)) {
-            throw new IOException("файл не найден");
+            throw new IOException("file wasn't found");
         }
         if (Files.isDirectory(pa)) {
-            throw new IOException("это директория, а не файл");
+            throw new IOException("it's directory");
         }
         if (!Files.isWritable(pa)) {
-            throw new IOException("файл недоступен  для записи");
+            throw new IOException("file isn't available");
         }
     }
 

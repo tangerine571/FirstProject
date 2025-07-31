@@ -9,9 +9,9 @@ public class Main {
         boolean exit = true;
         while (exit) {
             System.out.println("Main menu \n enter : \n 1  to encrypt \n 2 to decrypt \n 0 to exit");
-            int state = sc.nextInt();
-            sc.nextLine();
-            switch (state) {
+            String menuState = sc.nextLine();
+            int state = Validator.validState(menuState);
+            switch (state) {                                  // для имитации меню придумал только использовать while  и свитч
                 case 1:
                     handleEncryption();
                     break;

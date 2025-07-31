@@ -9,6 +9,16 @@ public class Validator {
     private Validator() {
     }
 
+    public static int validState(String menuState){
+        int state = 99;
+        try {
+            state = Integer.parseInt(menuState);
+        } catch (NumberFormatException e) {
+
+        }
+        return state;
+    }
+
     public static int validKey(String keyy) throws IOException {
         int key;
         try {

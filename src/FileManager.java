@@ -1,7 +1,10 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.stream.Stream;
 
 public class FileManager {
@@ -19,9 +22,9 @@ public class FileManager {
 //         2) для крупных файлов с максимальной оптимизацией используем BufferedReader через Files.newBufferedReader.
 //        так существует множество способов и методов, но они в основном устаревшие.
 
-        try(BufferedReader reader = Files.newBufferedReader(pa)){
+        try (BufferedReader reader = Files.newBufferedReader(pa)) {
             String line;
-            while((line = reader.readLine()) != null){
+            while ((line = reader.readLine()) != null) {
                 sb.append(line);
                 sb.append("\n");
             }
@@ -29,11 +32,15 @@ public class FileManager {
         String s = String.valueOf(sb);
         return s;
     }
-    public static void writer(String path, String text) throws IOException{
+
+    public static void writer(String path, String text) throws IOException {
         Validator.checkFileWriter(path);
         Path pa = Path.of(path);
 
+//        заменил files.readString на BufferedWriter для оптимизации
 
-        Files.writeString(pa,text);
+        try (BufferedWriter writer = Files.newBufferedWriter(pa, StandardCharsets.UTF_8, StandardOpenOption.TRUNCATE_EXISTING)) {
+            writer.write(text);
+        }
     }
 }
